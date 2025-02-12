@@ -1,16 +1,14 @@
 //cotação de moeda do dia
-const USD = 5.79;
-const EUR = 5.97;
-const GBP = 7.15;
-const CNY = 0.79;
+const USD = 5.79
+const EUR = 5.97
+const GPB = 7.15
+const CNY = 0.79
 
 //obtendo elementos do formulario
 const form = document.querySelector('form')
 const amount = document.getElementById('amount')
 const currency = document.getElementById('currency')
 const footer = document.querySelector('main footer')
-const description = document.getElementById('description')
-const result = document.getElementById ('result')
 
 
 //Manipulando o input amount para receber apenas numeros
@@ -33,7 +31,7 @@ form.onsubmit = () =>{
         case "EUR":
             convertCurrency(amount.value,EUR,"€")
             break
-        case "GBP":
+        case "GPB":
             convertCurrency(amount.value,EUR,"£")
             break
          case "CNY":
@@ -48,19 +46,7 @@ form.onsubmit = () =>{
 function convertCurrency (amount,price,symbol){
 
    try{
-    // exibindo a cotação da moeda selecionada
-    description.textContent = `${symbol}1 = ${formatCurrencyBRL(price)}`
-    // calcula o total 
-    let total = amount * price
-    
-    //verifica se o valor é um numero
-    if(isNaN(total)){
-        return alert("Por favor,digite o valor corretamente para converter")
-    }
-    //formatar valor total 
-    total = formatCurrencyBRL(total).replace("R$", "")
-    result.textContent = `${total} Reais` 
-
+    // add uma classe ao footer que coloca o display em block no css ou seja ela vai exibir o footer que nao esta sendo exibido
 
     footer.classList.add ("show-result") 
 
@@ -74,12 +60,4 @@ function convertCurrency (amount,price,symbol){
    }
 
 
-
-}
-// Formata a moeda em real brasileiro
-function formatCurrencyBRL (value){
-     return Number(value).toLocaleString("pt-BR",{
-        style: "currency",
-        currency: "BRL"
-     }) 
 }
